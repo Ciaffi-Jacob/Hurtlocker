@@ -8,11 +8,9 @@ import java.util.regex.Pattern;
 public class TestMain {
     @Test
     public void testSplit(){ //takes string from pattern
-        String expected = "name:    Milk \t\t seen: 1 times\n" +
-                "============= \t \t =============\n" +
-                "Price: \t 3.23\t\t seen: 1 times\n" +
-                "-------------\t\t -------------";
-        String actual = (new Main()).split("naMe:Milk;price:3.23;type:Food;expiration:1/25/2016");
+        HashMap<String, Double> expected = new HashMap<>();
+        expected.put("Milk", 3.23);
+        HashMap<String, Double> actual = Main.split(Main.pattern("naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##", "##"));
 
         Assert.assertEquals(expected, actual);
     }
@@ -26,9 +24,9 @@ public class TestMain {
     public void testPattern(){//takes string (result)
         Pattern p = Pattern.compile("##");
         Matcher m = p.matcher("naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##naME:BreaD;price:1.23;type:Food;expiration:1/02/2016##");
-        String actual = (new Main()).pattern("naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##naME:BreaD;price:1.23;type:Food;expiration:1/02/2016##", "##");
+        Matcher actual = Main.pattern("naMe:Milk;price:3.23;type:Food;expiration:1/25/2016##naME:BreaD;price:1.23;type:Food;expiration:1/02/2016##", "##");
 
-        Assert.assertEquals(m.toString(), actual);
+        Assert.assertEquals(m, actual);
     }
     @Test
     public void testStore(){//takes HashMap and result from split
