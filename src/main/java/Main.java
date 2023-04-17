@@ -1,9 +1,11 @@
 import org.apache.commons.io.IOUtils;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
+    private HashMap hashMap;
 
     public String readRawDataToString() throws Exception{
         ClassLoader classLoader = getClass().getClassLoader();
