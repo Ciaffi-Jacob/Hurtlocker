@@ -34,4 +34,12 @@ public class TestMain {
 
 
     }
+    @Test
+    public void testCheckCount(){
+        int expected = 0;
+        String s = "";
+        int actual = Main.checkCount(s);
+
+        Assert.assertEquals(expected, actual);
+    }
 }

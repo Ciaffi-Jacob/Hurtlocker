@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 public class Main {
     private HashMap hashMap; //buckets will track how many of each thing for count
+    private String[]  name = {"Milk", "Bread", "Cookies", "Apples"};
+    private String[] outline = {"name:milk;price:3.23;type:food;expiration:1/25/2016", "", "", ""};
 
     public String readRawDataToString() throws Exception{
         ClassLoader classLoader = getClass().getClassLoader();
@@ -39,8 +41,13 @@ public class Main {
         this.hashMap = hashMap;
 
     }
+    public int checkCount(String s){
+        return -1;
+    }
     public static void format(){//takes map and formats for print
-
+    //store()
+        //checkCount()
+        //
     }
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
