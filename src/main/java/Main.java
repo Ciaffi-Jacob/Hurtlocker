@@ -1,14 +1,16 @@
 import org.apache.commons.io.IOUtils;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-    private HashMap hashMap; //buckets will track how many of each thing for count
-    private String[]  name = {"Milk", "Bread", "Cookies", "Apples"};
-    private String[] outline = {"name:milk;price:3.23;type:food;expiration:1/25/2016", "", "", ""};
+  //  private static HashMap<String, String> hashMap = new HashMap<>(); //buckets will track how many of each thing for count
+    private static ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
+    private String[]  name = {"milk", "bread", "cookies", "apples"};
+  //  private String[] outline = {"name:milk;price:3.23;type:food;expiration:1/25/2016", "", "", ""};
 
     public String readRawDataToString() throws Exception{
         ClassLoader classLoader = getClass().getClassLoader();
@@ -27,11 +29,13 @@ public class Main {
 //        }
         return  matcher;
     }
-    public static HashMap<String, Double> split(Matcher matcher){//takes broken up data and breaks up further with regex [;:^@] etc
-        Pattern pattern = Pattern.compile(matcher.group());
-        Matcher m = pattern.matcher()
+    public static void split(Matcher matcher){//takes broken up data and breaks up further with regex [;:^@] etc
+      //  Pattern pattern = Pattern.compile(matcher.group());
+      //  Matcher m = pattern.matcher("\p{Punct}");
         for (int i = 0; i < matcher.groupCount(); i++) {
-
+            if(matcher.find()){
+                hashMap.put(matcher.group(), matcher.);
+            }
             matcher.;
         }
         return null;
@@ -41,9 +45,12 @@ public class Main {
         this.hashMap = hashMap;
 
     }
+    /*
     public int checkCount(String s){
         return -1;
     }
+
+     */
     public static void format(){//takes map and formats for print
     //store()
         //checkCount()
@@ -53,6 +60,12 @@ public class Main {
         String output = (new Main()).readRawDataToString();
         Matcher matcher = pattern(output, "##");
         HashMap<String, Double> map = split(matcher);
+
+
+
+
+
+
         System.out.println(output);
     }
 }
