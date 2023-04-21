@@ -7,10 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
-  //  private static HashMap<String, String> hashMap = new HashMap<>(); //buckets will track how many of each thing for count
-    private static ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
-    private String[]  name = {"milk", "bread", "cookies", "apples"};
-  //  private String[] outline = {"name:milk;price:3.23;type:food;expiration:1/25/2016", "", "", ""};
+      private static ArrayList<String> arrayList = new ArrayList<>(); ///0 milk 1 bread 2 cookies 3 apples
+
 
     public String readRawDataToString() throws Exception{
         ClassLoader classLoader = getClass().getClassLoader();
@@ -21,52 +19,40 @@ public class Main {
         //pattern-matcher to break up data
         Pattern pattern = Pattern.compile(s);
         Matcher matcher = pattern.matcher(splitter);
-       // HashMap hashMap = new HashMap<>();
-       // StringBuilder sb = new StringBuilder();
-//        for (int i = 0; i < matcher.groupCount(); i++) {
-//           // hashMap.
-//            sb.append(split(matcher.group(i)));
-//        }
         return  matcher;
     }
     public static void split(Matcher matcher){//takes broken up data and breaks up further with regex [;:^@] etc
-      //  Pattern pattern = Pattern.compile(matcher.group());
-      //  Matcher m = pattern.matcher("\p{Punct}");
+        String[]  name = {"milk", "bread", "cookies", "apples"};
         for (int i = 0; i < matcher.groupCount(); i++) {
             if(matcher.find()){
-                hashMap.put(matcher.group(), matcher.);
+                for (int j = 0; j < 4; j++) {
+                    Pattern namePattern = Pattern.compile("(?i)(name:)(.+?)([;@^*%])");
+                    if (namePattern.equals(name[i])) {
+                        Pattern pricePattern = Pattern.compile("(?i)(price:)(.+?)([;@^*%])");
+                        store(i, pricePattern.toString());    //sends index and cost to store
+                    }
+                }
             }
-            matcher.;
         }
-        return null;
         //send broken matcher to store
     }
-    public void store(String s, Double d){//takes broken up data and puts into map
-        this.hashMap = hashMap;
+    public static void store(int i, String s){//takes broken up data and puts into map
+        arrayList.add(i, s);
 
     }
-    /*
-    public int checkCount(String s){
-        return -1;
-    }
-
-     */
-    public static void format(){//takes map and formats for print
+    public static String format(){//takes map and formats for print
     //store()
         //checkCount()
         //
+        return  null;
     }
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
         Matcher matcher = pattern(output, "##");
-        HashMap<String, Double> map = split(matcher);
+        split(matcher);
+        String print = format();
 
-
-
-
-
-
-        System.out.println(output);
+        System.out.println(print);
     }
 }
 /*
